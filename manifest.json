@@ -7,5 +7,16 @@
     "default_icon": "images/icon.png",
     "default_popup": "html/popup.html",
     "default_title": "Blue Check Mark with Privacy Preserving Proof of Personhood"
-  }
+  },
+
+  "content_scripts": [
+    {
+       "matches": [
+        "https://twitter.com/*"
+        // "https://google.com/*",
+       ],
+       "js": ["scripts/show-verified-accounts.js"],
+       "css": [   "css/show-verified-accounts.css"]
+     }
+   ]
 }
