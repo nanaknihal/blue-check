@@ -13,7 +13,6 @@
     {
        "matches": [
         "https://twitter.com/*"
-        // "https://google.com/*",
        ],
        "js": ["scripts/show-verified-accounts.js"],
        "css": [   "css/show-verified-accounts.css"]

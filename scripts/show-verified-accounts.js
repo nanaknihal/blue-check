@@ -37,10 +37,20 @@ function appendSVG(el) {
 function styleUsers() {
     const userLinks = document.querySelectorAll("a.css-4rbku5.css-18t94o4.css-1dbjc4n.r-1niwhzg.r-1loqt21.r-1pi2tsx.r-1ny4l3l.r-o7ynqc.r-6416eg.r-13qz1uu");
     userLinks.forEach(link=>{
-        if(link.href?.toLowerCase() == "nanaknihal")link.href = "Google"
-        if(link.hasNewStyle)return;
-        appendSVG(link);
-        link.hasNewStyle=true;
+        if(link.hasBeenQueried)return;
+        /* SSL Certificate needs to be working for this not to be blocked. We are having difficulties with AWS SSL certificate right now, so are just enabling Vitalik Buterin. 
+         * To see how the server works, please see https://github.com/nanaknihal/blue-check-db-server
+         * When server works, this will be replaced with an https request: */
+        // fetch(`http://ec2-3-21-242-132.us-east-2.compute.amazonaws.com:8080/get/${link.href.replace("https://twitter.com/","")}`)
+        // .then(response => {if(response.json())appendSVG(link)});
+        
+        /* Again, VitalikButerin being the only verified user is temporary, until the server SSL certificate works:
+         * then users should be able to verify themselves. 
+         * The server code works and is at https://github.com/nanaknihal/blue-check-db-server. Is is just blocked
+         */
+        const isVerified = link.href?.replace("https://twitter.com/","") === "VitalikButerin";//response.json();
+        if(isVerified)appendSVG(link);
+        link.hasBeenQueried=true;
     })
 }
 
